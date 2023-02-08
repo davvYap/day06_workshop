@@ -21,7 +21,7 @@ instance created.
 
 4. ServerApp class is to generate the portnumber based on user input,subsequently call 
 ExecutorService to define the number of threads to handle incoming request.
-Then, it will call CookieClientHandler to receive the response from client server.
+Then, it will pass CookieClientHandler instance to receive the response from client server.
 
 5. ClientApp is to pass in the localhost:portnumber to connect with the socket with
 ServerApp. User will be able to pass in the cmd such as: 
