@@ -16,8 +16,7 @@ public class ClientApp {
         System.out.println(arrSplit[1]);    // portnumber
         try{
             while(true){
-                Socket sock = new Socket(arrSplit[0]
-                    , Integer.parseInt(arrSplit[1]));
+                Socket sock = new Socket(arrSplit[0], Integer.parseInt(arrSplit[1]));
             
                 InputStream is = sock.getInputStream();
                 DataInputStream dis = new DataInputStream(is);
@@ -34,8 +33,7 @@ public class ClientApp {
                 String response = dis.readUTF(); // read the response from CookieClientHandler write()
                 if(response.contains("cookie-text")){
                     String[] cookieValArr = response.split("_");
-                    System.out.println("Cookie from the server: "
-                            + cookieValArr[1]);
+                    System.out.println("Cookie from the server: "+ cookieValArr[1]);
                 }else if(response.toLowerCase().contains("end")){   // if user input "end" command
                     break;
                 }else{
