@@ -15,16 +15,16 @@ public class CookieClientHandler implements Runnable{
     @Override
     public void run(){
         NetworkIO netIO = null;
-        String req = "";
+        String request = "";
         String randomCookie = "";
         try{
-            netIO = new NetworkIO(socket);
+            netIO = new NetworkIO(socket);  // the inputstream is with NetWorkIO Object, thus only it can read/write from/to clientApp which connected to the socket
             while(true){
-                req = netIO.read();
-                if(req.trim().equals("end")){
-                    netIO.write("End response from client server.");
+                request = netIO.read();     // readUTF from ClientApp
+                if(request.trim().equals("end")){
+                    netIO.write("End response from client server.");    // writeUTF to ClientApp
                     break;
-                }else if(req.trim().equals("get-cookie")){
+                }else if(request.trim().equals("get-cookie")){
                     randomCookie = Cookie.getRandomCookie(this.cookieFile);
                     netIO.write("cookie-text_"+randomCookie);
                     break;

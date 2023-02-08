@@ -12,8 +12,8 @@ import java.net.UnknownHostException;
 public class ClientApp {
     public static void main(String[] args){
         String[] arrSplit = args[0].split(":");
-        System.out.println(arrSplit[0]);
-        System.out.println(arrSplit[1]);
+        System.out.println(arrSplit[0]);    // localhost
+        System.out.println(arrSplit[1]);    // portnumber
         try{
             while(true){
                 Socket sock = new Socket(arrSplit[0]
@@ -26,8 +26,7 @@ public class ClientApp {
                 DataOutputStream dos = new DataOutputStream(os);
                 
                 Console cons = System.console();
-                String input = 
-                        cons.readLine("Send command to the random cookie server ? ");
+                String input = cons.readLine("Send command to the random cookie server ? ");
 
                 dos.writeUTF(input);
                 dos.flush();
@@ -37,7 +36,7 @@ public class ClientApp {
                     String[] cookieValArr = response.split("_");
                     System.out.println("Cookie from the server: "
                             + cookieValArr[1]);
-                }else if(response.toLowerCase().contains("end")){
+                }else if(response.toLowerCase().contains("end")){   // if user input "end" command
                     break;
                 }else{
                     System.err.println(response);
