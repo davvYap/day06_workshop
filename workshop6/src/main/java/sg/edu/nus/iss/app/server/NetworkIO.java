@@ -1,5 +1,7 @@
 package sg.edu.nus.iss.app.server;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -17,9 +19,11 @@ public class NetworkIO {
     public NetworkIO(Socket socket) throws IOException{
        is = socket.getInputStream();
        dis = new DataInputStream(is); 
+       // DataInputStream disNew = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
        os = socket.getOutputStream();
        dos = new DataOutputStream(os);
+       // DataOutputStream dosNew = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
     }
 
     public String read() throws IOException{

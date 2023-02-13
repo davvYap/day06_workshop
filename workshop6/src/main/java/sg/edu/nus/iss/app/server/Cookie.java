@@ -23,10 +23,10 @@ public class Cookie {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
         return randomCookie;
     }
 
+    // Read data from cookies_file.txt and convert to list
     public static List<String> getDataFromText(String filepath) throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(filepath));
         List<String> lists = new LinkedList<>();
